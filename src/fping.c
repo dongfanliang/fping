@@ -742,6 +742,15 @@ int main( int argc, char **argv )
         }
     }
 
+#if HAVE_SO_TIMESTAMP 
+    {
+        int opt = 1;
+        if (setsockopt(s, SOL_SOCKET, SO_TIMESTAMP,  &opt, sizeof(opt))) {
+            perror("setting SO_TIMESTAMP option");
+        }
+    }
+#endif
+
     /* handle host names supplied on command line or in a file */
     /* if the generate_flag is on, then generate the IP list */
 
