@@ -69,10 +69,10 @@ int open_ping_socket_ipv6()
     {
         int flags;
 
-        if((flags = fcntl(sock_descriptor, F_GETFL, 0)) < 0)
+        if((flags = fcntl(s, F_GETFL, 0)) < 0)
             perror("fcntl");
 
-        if(fcntl(socket_descriptor, F_SETFL, flags | O_NONBLOCK) < 0)
+        if(fcntl(s, F_SETFL, flags | O_NONBLOCK) < 0)
             perror("fcntl");
     }
 
